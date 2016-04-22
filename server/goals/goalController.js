@@ -45,9 +45,8 @@ module.exports = {
   },
 
   deleteGoal: function(req, res) {
-    var params = req.params.user_id.split('+')
-    var user_id = params[0];
-    var goal_id = params[1];
+    var user_id = req.params.user_id;
+    var goal_id = req.params.goal_id;
 
     User.findOne({ auth_id: user_id })
       .then(function(user) {

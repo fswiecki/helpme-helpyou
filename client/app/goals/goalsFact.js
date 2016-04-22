@@ -47,7 +47,7 @@ function Goals($http) {
     deleteGoal: function(user_id, goal_id) {
       return $http({
         method: 'DELETE',
-        url: '/api/goals/' + user_id + '+' + goal_id,
+        url: '/api/goals/' + user_id + '/' + goal_id,
       })
       .then(function(res) {
         return res.data;
