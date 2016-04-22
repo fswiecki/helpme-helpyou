@@ -25,15 +25,15 @@ module.exports = {
 
   updateGoal: function(req, res) {
     var user_id = req.params.user_id;
+    var goal_id = req.params.goal_id;
     var goal = req.body;
-    var id = goal._id;
-    delete goal._id; //so we don't cause problems
+    console.log('hello world?')
 
     User.findOne({ auth_id: user_id })
       .then(function(user) {
         for (var i = 0; i < user.goals.length; i++) {
           var g = user.goals[i];
-          if (g._id == id) {
+          if (g._id == goal_id) {
             for (var key in goal) {
               g[key] = goal[key];
             };

@@ -48,12 +48,10 @@ function GoalsController($scope, auth, Goals) {
 
   // Mark a goal as completed
   $scope.completeGoal = function(goalId) {
-    console.log(goalId);
     var goal = {
-      _id: goalId,
       complete: true
     };
-    Goals.updateGoal($scope.profile.user_id, goal)
+    Goals.updateGoal($scope.profile.user_id, goalId, goal)
       .then(function(data) {
         $scope.getGoals();
 
@@ -65,7 +63,6 @@ function GoalsController($scope, auth, Goals) {
 
   // Delete a goal
   $scope.deleteGoal = function(goalId) {
-    console.log($scope.profile.user_id)
     Goals.deleteGoal($scope.profile.user_id, goalId)
       .then(function(data) {
         $scope.getGoals();

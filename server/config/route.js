@@ -4,12 +4,12 @@ var postController = require('../posts/postController');
 var helpers = require('./helper');
 
 module.exports = function(app, express) {
-  app.route('/api/goals/:user_id/')
+  app.route('/api/goals/:user_id')
     .get(goalController.getGoals)
-    .post(goalController.addGoal)
-    .put(goalController.updateGoal);
+    .post(goalController.addGoal);
 
   app.route('/api/goals/:user_id/:goal_id')
+    .put(goalController.updateGoal)
     .delete(goalController.deleteGoal);
 
   app.route('/api/profile/:user_id')

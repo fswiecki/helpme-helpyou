@@ -32,15 +32,15 @@ function Goals($http) {
     },
 
     //PUTs some new goal data in our MongoDB
-    updateGoal: function(user_id, goal) {
+    updateGoal: function(user_id, goal_id, goal) {
       return $http({
         method: 'PUT',
-        url: '/api/goals/' + user_id,
+        url: '/api/goals/' + user_id + '/' + goal_id,
         data: goal
       })
       .then(function(res) {
         return res.data;
-      })
+      });
     },
 
     //DELETEs a goal from our MongoDB
@@ -51,7 +51,7 @@ function Goals($http) {
       })
       .then(function(res) {
         return res.data;
-      })
+      });
     }
   };
 }
