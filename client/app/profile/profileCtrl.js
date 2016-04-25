@@ -92,11 +92,11 @@ function ProfileController($scope, $timeout, auth, Profile) {
       .then(function(newCount) {
         // check for any difference in currentCount and newCount
         Profile.checkComment(currentCount, newCount, $scope.user.posts, newPosts);
+        $timeout($scope.poller, 2000);
       })
       .catch(function(error) {
         console.error(error);
       });
-    $timeout($scope.poller, 2000);
   };
 
   // Once auth0 profile info has been set, query our database for user's profile and posts

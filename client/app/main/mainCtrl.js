@@ -235,11 +235,11 @@ function MainController($scope, $timeout, auth, Goals, Friend, Profile) {
       .then(function(newCount) {
         // check for any difference in new count and current count
         Profile.checkComment(currentCount, newCount, $scope.posts, newPosts);
+        $timeout($scope.poller, 2000);
       })
       .catch(function(error) {
         console.error(error);
       });
-    $timeout($scope.poller, 2000);
   };
 
   // Once auth0 profile info has been set, query our database for friends' posts, inactive friends and personal goals.
