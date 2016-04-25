@@ -235,6 +235,8 @@ function MainController($scope, $timeout, auth, Goals, Friend, Profile) {
       .then(function(newCount) {
         // check for any difference in new count and current count
         Profile.checkComment(currentCount, newCount, $scope.posts, newPosts);
+      })
+      .then(function() {
         $timeout($scope.poller, 2000);
       })
       .catch(function(error) {

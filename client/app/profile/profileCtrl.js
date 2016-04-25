@@ -92,6 +92,8 @@ function ProfileController($scope, $timeout, auth, Profile) {
       .then(function(newCount) {
         // check for any difference in currentCount and newCount
         Profile.checkComment(currentCount, newCount, $scope.user.posts, newPosts);
+      })
+      .then(function() {
         $timeout($scope.poller, 2000);
       })
       .catch(function(error) {
