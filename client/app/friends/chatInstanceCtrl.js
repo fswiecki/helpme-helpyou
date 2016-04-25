@@ -2,9 +2,9 @@ angular
   .module('app.chat')
   .controller('ChatInstanceCtrl', ChatInstanceCtrl);
   
-ChatInstanceCtrl.$inject = ['$scope', '$uibModalInstance', 'Socket', 'auth', 'Profile', 'current'];
+ChatInstanceCtrl.$inject = ['$scope', '$uibModalInstance', 'Socket', 'auth', 'Profile', 'current', '$scope', '$timeout'];
   
-function ChatInstanceCtrl($scope, $uibModalInstance, Socket, auth, Profile, current) {
+function ChatInstanceCtrl($scope, $uibModalInstance, Socket, auth, Profile, current, $scope, $timeout) {
   $scope.messages = [];
   $scope.chatFriend = current;
   $scope.msgLoadingComplete = false;
@@ -20,6 +20,10 @@ function ChatInstanceCtrl($scope, $uibModalInstance, Socket, auth, Profile, curr
     if (($scope.chatFriend === data.friend || $scope.chatFriend === data.username) &&
         ($scope.profile.nickname === data.username || $scope.profile.nickname === data.friend)) {
       $scope.messages.push(data);
+      $timeout(function() {
+        var scroller = document.getElementById('autoscroll');
+        scroller.scrollTop = scroller.scrollHeight;
+      }, 0, false);
     }
   });
 
